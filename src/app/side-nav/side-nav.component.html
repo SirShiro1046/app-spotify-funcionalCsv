@@ -1,0 +1,35 @@
+<div class="side-nav-content">
+    <ul class="nav-list text-light" [ngClass]="{'nav-list-open':sideNavStatus}">
+        <li class="nav-list-item" (click)="navegaAtodasLasMusicas()">
+            <i class="fa-solid fa-house"></i>
+            <span>
+                <a routerLink="musicas">Home</a>
+            </span>
+        </li>
+        <li class="nav-list-item" (click)="navegaATop10Musicas()">
+            <i class="fa-solid fa-star"></i>
+            <span>
+                <a routerLink="top10Musicas">Top 10 Canciones</a>
+            </span>
+        </li>
+        <li class="nav-list-item dropdown dropdown-toggle custom-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-chevron-down"></i>
+            <span>
+              <a href="#">Mas Busquedas</a>
+            </span>
+            <ul class="dropdown-menu custom-dropdown-menu">
+              <li  (click)=" navegaAMusicasOffVoice()"><button class="dropdown-item" type="button">Sin voces</button></li>
+              <li><button class="dropdown-item" type="button">Artista con mas Canciones</button></li>
+              <li (click)="navegaAtodosLosArtistas()"><button class="dropdown-item" type="button">Todos los Artistas</button></li>
+              <li ><button class="dropdown-item" type="button">Tiempo de canciones</button></li>
+
+              <li (click)="navegaAtodosLosAlbums()"><button class="dropdown-item" type="button">Albums</button></li>
+
+              <li ><button class="dropdown-item" type="button">Generos</button></li>
+
+              
+            </ul>
+          </li>
+          
+    </ul>
+</div>

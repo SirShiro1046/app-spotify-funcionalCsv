@@ -1,0 +1,63 @@
+<div>
+    <form class="row" (ngSubmit)="buscarPorNombre()">
+       
+        <div class="col-auto">
+            <input class="form-control" placeholder="Buscar Musica o Artista" type="text" id="nombre" [(ngModel)]="nombreBusqueda" name="nombreBusqueda" />
+           
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
+
+  </div>
+  
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th style="border-top-left-radius: 10px;" scope="col">ID</th>
+        <th scope="col">Musica</th>
+        <th scope="col">Artista</th>
+        <th scope="col">Genero</th>
+        <th style="border-top-right-radius: 10px;">Escuchame</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let musica of (musicas || []) | paginate:{itemsPerPage:7, currentPage: p}">
+        <tr >
+          <td class="nav-list-item dropdown dropdown-toggle custom-dropdown"  data-bs-toggle="dropdown" aria-expanded="false">
+            {{musica.track_id}}
+            <ul class="dropdown-menu custom-dropdown-menu">
+              <li><button class="dropdown-item" type="button"><b>Album:</b> {{musica.track_album_name}} <b>Sub Genero:</b> {{musica.playlist_subgenre}}</button></li>
+              <li><button class="dropdown-item" type="button"><b>Tiempo:</b> {{musica.duration_ms}} <b>Tempo:</b> {{musica.tempo}}</button></li>
+              <li><button class="dropdown-item" type="button"><b>Energy:</b> {{musica.energy}} <b>Key:</b> {{musica.key}}</button></li>
+              <li><button class="dropdown-item" type="button"><b>Intrumentalness:</b> {{musica.instrumentalness}} <b>Liveness:</b> {{musica.liveness}}</button></li>
+
+              
+            </ul>
+          </td>
+          <td>{{musica.track_name}}</td>
+          <td>{{musica.track_artist}}</td>
+          <td>{{musica.playlist_genre}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="loadSpotifyFrame(musica.track_id)"><i
+                class="fa-solid fa-play"></i>Play</button>
+          </td>
+        </tr>
+        <tr *ngIf="selectedTrackId === musica.track_id">
+          <td colspan="5">
+            <iframe style="border-radius:12px" [src]="getSafeUrl(musica.track_id)" width="100%" height="82"
+                    frameBorder="0" allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                    autoplay>
+            </iframe>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
+    </pagination-controls>
+  </div>
+  

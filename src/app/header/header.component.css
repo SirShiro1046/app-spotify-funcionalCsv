@@ -1,0 +1,17 @@
+nav{
+    background-color: rgb(18, 18, 18);
+    width: 98.5%;
+    margin-left: 0.7%;
+    margin-top: 0.15%;
+    border-radius: 8px;
+}
+
+i{
+    font-size: 30px;
+}
+#iconMenu{
+    font-size: 15px;
+}
+*{
+    color: white;
+}

@@ -1,0 +1,22 @@
+<p class="h2" style="color: white;">{{titulo}}</p>
+
+<table class="table table-dark">
+  <thead style="background-color: white;">
+    <tr>
+      <th scope="col">Albums</th>
+   
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let artista of (artistas || []) | paginate:{itemsPerPage:8, currentPage: p}">
+      <tr>
+        <td>{{artista}}</td>
+       
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<div class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente">
+  </pagination-controls>
+</div>

@@ -1,0 +1,43 @@
+app-header{
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 4rem;
+    z-index: 2;
+}
+main{
+    position: absolute;
+    width: 100%;
+    top: 4.4rem;
+    z-index: 1;
+}
+app-side-nav{
+    position: fixed;
+    margin-left: 10px;
+    left: 0rem;
+    width: 60px;
+    height:calc(100vh - 4.4rem);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    background-color: rgb(18, 18, 18);
+    border-radius: 10px;
+    overflow-x:hidden;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.app-side-nav-open{
+    width: 250px;
+}
+
+.display-area{
+    position: absolute;
+    left: 80px;
+    width: calc(93%);
+    transition: 0.2s;
+}
+
+.display-area-shrink{
+    width: calc(79%);
+    left: 270px;
+    transition: 0.2s;
+}
